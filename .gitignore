@@ -1,0 +1,13 @@
+# Ignora qualquer node_modules em qualquer subpasta do repositório
+**/node_modules/
+
+# Ignora pastas de build/compilação que o Vite cria em cada subpasta
+**/dist/
+
+# Ignora arquivos de variáveis de ambiente
+**/.env
+**/.env.*
+
+# Ignora logs de erro
+npm-debug.log*
+yarn-debug.log*
