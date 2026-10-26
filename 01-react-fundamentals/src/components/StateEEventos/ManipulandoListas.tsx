@@ -45,12 +45,12 @@ export default function ManipulandoListas() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Digite sua tarefa..."
-        className="bg-slate-200 border pl-2"
+        className="bg-slate-200 border pl-2 w-full max-w-145 h-12 rounded-xl"
       />{" "}
       <br />
       <button
         type="button"
-        className="bg-slate-400 py-2 px-4 my-2 cursor-pointer hover:bg-slate-300 duration-200 rounded-[10px]"
+        className="bg-slate-300 py-2 px-4 my-2 cursor-pointer hover:bg-slate-400 duration-200 rounded-[10px]"
         onClick={handleRegister}
       >
         Adicionar tarefa
