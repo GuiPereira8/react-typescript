@@ -2,11 +2,7 @@ import { useState } from "react";
 
 export default function ManipulandoListas() {
   const [input, setInput] = useState<string>("");
-  const [tarefas, setTarefas] = useState([
-    "Estudar React com TypeScript",
-    "Comprar pão de manhã cedo",
-    "Estudar Inglês a noite",
-  ]);
+  const [tarefas, setTarefas] = useState<string[]>([]);
   const [editTask, setEditTask] = useState({
     enable: false,
     task: "",
@@ -17,9 +13,30 @@ export default function ManipulandoListas() {
       window.alert("Preencha o nome da sua tarefa!");
       return;
     }
+
+    if (editTask.enable) {
+      handleSaveEdit();
+      return;
+    }
+
     setTarefas((tasks) => [...tasks, input]);
     setInput("");
   }
+
+  function handleSaveEdit() {
+    const findIndexTask = tarefas.findIndex((task) => task === editTask.task);
+    const allTasks = [...tarefas];
+
+    allTasks[findIndexTask] = input;
+    setTarefas(allTasks);
+
+    setEditTask({
+      enable: false,
+      task: "",
+    });
+    setInput("");
+  }
+
   function handleDelete(item: string) {
     const deletarTarefa = tarefas.filter((task) => task !== item);
     setTarefas(deletarTarefa);
@@ -45,7 +62,7 @@ export default function ManipulandoListas() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Digite sua tarefa..."
-        className="bg-slate-200 border pl-2 w-full max-w-145 h-12 rounded-xl"
+        className="bg-slate-100 border pl-2 w-full max-w-145 h-12 rounded-xl"
       />{" "}
       <br />
       <button
@@ -53,7 +70,7 @@ export default function ManipulandoListas() {
         className="bg-slate-300 py-2 px-4 my-2 cursor-pointer hover:bg-slate-400 duration-200 rounded-[10px]"
         onClick={handleRegister}
       >
-        Adicionar tarefa
+        {editTask.enable ? "Atualizar tarefa" : "Adicionar tarefa"}
       </button>
       <hr />
       {tarefas.map((item, index) => (
