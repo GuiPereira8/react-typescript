@@ -9,7 +9,11 @@ export default function ListaComEffect() {
   });
 
   useEffect(() => {
-    console.log("COMPONENTE FOI MONTADO NA TELA");
+    const tarefaSalvas = localStorage.getItem("@tasklist");
+
+    if (tarefaSalvas) {
+      setTarefas(JSON.parse(tarefaSalvas));
+    }
   }, []);
 
   function handleRegister() {
@@ -25,6 +29,7 @@ export default function ListaComEffect() {
 
     setTarefas((tasks) => [...tasks, input]);
     setInput("");
+    localStorage.setItem("@tasklist", JSON.stringify([...tarefas, input]));
   }
 
   function handleSaveEdit() {
@@ -39,11 +44,13 @@ export default function ListaComEffect() {
       task: "",
     });
     setInput("");
+    localStorage.setItem("@tasklist", JSON.stringify(allTasks));
   }
 
   function handleDelete(item: string) {
     const deletarTarefa = tarefas.filter((task) => task !== item);
     setTarefas(deletarTarefa);
+    localStorage.setItem("@tasklist", JSON.stringify(deletarTarefa));
   }
 
   function handleEdit(item: string) {
