@@ -2,19 +2,26 @@ import { useState, useEffect } from "react";
 
 export default function ListaComEffect() {
   const [input, setInput] = useState<string>("");
-  const [tarefas, setTarefas] = useState<string[]>([]);
+
+  // Inicialização preguiçosa do estado
+  const [tarefas, setTarefas] = useState<string[]>(() => {
+    const tarefaSalvas = localStorage.getItem("@tasklist");
+
+    if (tarefaSalvas) {
+      return JSON.parse(tarefaSalvas) as string[];
+    }
+    return [];
+  });
+
   const [editTask, setEditTask] = useState({
     enable: false,
     task: "",
   });
 
+  // O useEffect cuida APENAS de SALVAR quando a lista mudar
   useEffect(() => {
-    const tarefaSalvas = localStorage.getItem("@tasklist");
-
-    if (tarefaSalvas) {
-      setTarefas(JSON.parse(tarefaSalvas));
-    }
-  }, []);
+    localStorage.setItem("@tasklist", JSON.stringify(tarefas));
+  }, [tarefas]);
 
   function handleRegister() {
     if (!input) {
