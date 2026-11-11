@@ -1,5 +1,5 @@
-import ExemploCallback from "./components/hooks/ExemploCallback";
+import { ExemploCondicional } from "./components/StateEEventos/ExemploCondicional";
 
 export default function App() {
-  return <ExemploCallback />;
+  return <ExemploCondicional />;
 }
