@@ -1,5 +1,5 @@
-import ExemploMemo from "./components/hooks/ExemploMemo";
+import ExemploCallback from "./components/hooks/ExemploCallback";
 
 export default function App() {
-  return <ExemploMemo />;
+  return <ExemploCallback />;
 }
