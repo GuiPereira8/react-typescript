@@ -1,5 +1,5 @@
-import { ExemploCondicional } from "./components/StateEEventos/ExemploCondicional";
+import GeradorFrases from "./projects/GeradorFrases/GeradorFrases";
 
 export default function App() {
-  return <ExemploCondicional />;
+  return <GeradorFrases />;
 }
