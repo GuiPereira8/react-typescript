@@ -57,7 +57,7 @@ export default function GeradorFrases() {
   }
 
   return (
-    <div className="flex flex-col w-full min-h-dvh bg-slate-800 items-center md:bg-[#3737aa] xl:bg-[#a6d12f] py-4 px-6">
+    <div className="flex flex-col w-full min-h-dvh bg-slate-800 items-center py-4 px-6">
       <img
         src={logoImg}
         alt="Logo frases"
@@ -85,7 +85,7 @@ export default function GeradorFrases() {
       </button>
 
       {textoFrase !== "" && (
-        <p className="bg-white rounded-md py-3.5 px-6 max-w-105 text-center text-[18px]/[150%] text-[#dd7b22] italic shadow-lg">
+        <p className="bg-white rounded-md py-3.5 px-6 max-w-105 text-center text-[20px]/[150%] text-[#dd7b22] italic shadow-lg font-medium">
           {textoFrase}
         </p>
       )}
