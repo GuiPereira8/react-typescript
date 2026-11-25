@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+import { Layout } from "./components/Layout";
 
 import { Home } from "./pages/Home";
 import { Sobre } from "./pages/Sobre";
@@ -8,20 +9,25 @@ import { NotFound } from "./pages/NotFound";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/sobre",
-    element: <Sobre />,
-  },
-  {
-    path: "/contato",
-    element: <Contato />,
-  },
-  {
-    path: "/produto/:id",
-    element: <Produto />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/sobre",
+        element: <Sobre />,
+      },
+      {
+        path: "/contato",
+        element: <Contato />,
+      },
+      {
+        path: "/produto/:id",
+        element: <Produto />,
+      },
+    ],
   },
   //
   // Página notFound é sempre a última.
