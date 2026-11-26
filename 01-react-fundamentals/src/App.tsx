@@ -1,5 +1,5 @@
-import GeradorFrases from "./projects/GeradorFrases/GeradorFrases";
+import { DescubraIdade } from "./projects/DescubraIdade/DescubraIdade";
 
 export default function App() {
-  return <GeradorFrases />;
+  return <DescubraIdade />;
 }
